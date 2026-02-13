@@ -2,7 +2,7 @@
 
 A personal collection of Claude Code plugins built to sharpen AI-assisted development — better codebase understanding, tighter context windows, structured workflows, and faster research loops.
 
-Seven plugins across three categories, each solving a specific friction point in agent-driven development.
+Seven plugins across three categories, each solving a specific friction point in agent-driven development. Together, they compose into an automated orchestration pipeline that takes a plan from outline to committed code.
 
 ## Install
 
@@ -24,7 +24,9 @@ Help your AI agent understand, map, and efficiently consume codebases.
 | [**chronicler**](https://github.com/shihwesley/chronicler) | Ambient `.tech.md` generation with freshness tracking | `/plugin install chronicler@shihwesley-plugins` |
 | [**code-simplifier-tldr**](https://github.com/shihwesley/code-simplifier-tldr) | AST-based code summarization — 80%+ token savings | `/plugin install code-simplifier-tldr@shihwesley-plugins` |
 
-**mercator-ai** builds a structural map of your codebase so agents navigate by map instead of blind grep. **chronicler** keeps per-file documentation fresh without manual effort. **code-simplifier-tldr** compresses source files into AST summaries that preserve structure while cutting token costs.
+- **mercator-ai** — Generates `CODEBASE_MAP.md` with file purposes, architecture layers, and dependency graphs. Uses a merkle manifest (`docs/.mercator.json`) so re-runs only re-analyze changed files instead of rescanning everything.
+- **chronicler** — Watches your source files and auto-generates `.tech.md` docs alongside them. Tracks freshness per file — flags stale docs when the source changes, so documentation stays current without manual upkeep.
+- **code-simplifier-tldr** — Parses source into AST summaries (function signatures, class shapes, key types) and caches them. Agents read summaries for context and only pull full source when they need to edit. Cuts 80%+ of token usage on large codebases.
 
 ### Workflow & Environment
 
@@ -35,7 +37,8 @@ Structure your planning process and manage runtime environments without manual s
 | [**interactive-planning**](https://github.com/shihwesley/interactive-planning) | File-based planning with interactive gates and task tracking | `/plugin install interactive-planning@shihwesley-plugins` |
 | [**orbit**](https://github.com/shihwesley/Orbit) | Ambient dev environment management — auto-switches dev/test/staging/prod via Docker | `/plugin install orbit@shihwesley-plugins` |
 
-**interactive-planning** gives agents a structured plan/execute cycle with user checkpoints at decision points. **orbit** detects which environment you need and manages Docker containers so you stop manually toggling between dev, test, staging, and prod.
+- **interactive-planning** — Creates a `task_plan.md` with phases, dependencies, and progress tracking. Pauses at interactive gates (key decision points) to ask the user before continuing — prevents agents from charging ahead on the wrong path. Supports both single-plan and multi-spec modes.
+- **orbit** — Classifies what you're doing (running tests, debugging, deploying) and auto-switches the right Docker environment. Manages container lifecycle, sidecars, and port mapping across dev/test/staging/prod so you never run tests against the wrong database.
 
 ### Research & Extraction
 
@@ -46,7 +49,45 @@ Sandboxed experimentation and capability extraction from external sources.
 | [**rlm-sandbox**](https://github.com/shihwesley/rlm-sandbox) | Docker sandbox for Python/DSPy + memvid knowledge store (16 MCP tools) | `/plugin install rlm-sandbox@shihwesley-plugins` |
 | [**agent-reverse**](https://github.com/shihwesley/agent-reverse) | Reverse engineer capabilities from repos, configs, articles into your workflow | `/plugin install agent-reverse@shihwesley-plugins` |
 
-**rlm-sandbox** spins up isolated Python environments with a built-in knowledge store for running experiments without touching your host. **agent-reverse** extracts patterns, skills, and configurations from any source — GitHub repos, local configs, articles — and wires them into your agent setup.
+- **rlm-sandbox** — Spins up an isolated Docker container with Python, DSPy, and a memvid-backed knowledge store. Exposes 16 MCP tools for code execution, sub-agent orchestration, session persistence, and research automation — all sandboxed so nothing touches your host machine.
+- **agent-reverse** — Point it at a GitHub repo, local config, binary, or article and it extracts capabilities, patterns, and skills into your agent workflow. Includes security scanning, manifest tracking, and cross-agent restore so you can port setups between machines.
+
+### Orchestration (preview)
+
+`/orchestrate` is an automated pipeline that chains these plugins into a single execution flow. It takes output from `/interactive-planning` and runs it through plan review, skill matching, worktree isolation, parallel agent dispatch, testing, code review, and incremental commits — hands-off from plan to merged code.
+
+Not yet packaged as a standalone plugin. Currently runs as a personal workflow on top of the installed plugins above. The plan is to ship it once the remaining dependencies (code-review, commit-split) are also pluginized.
+
+[Full pipeline breakdown](docs/orchestrate-workflow.md)
+
+## How They Work Together
+
+These plugins aren't just a collection — they compose into a pipeline. The orchestrator consumes output from each plugin at different stages:
+
+```mermaid
+graph LR
+    IP["interactive-planning"] --> O["/orchestrate"]
+    MA["mercator-ai"] --> O
+    CH["chronicler"] --> O
+    TLDR["code-simplifier-tldr"] --> O
+    AR["agent-reverse"] --> O
+    O --> OB["orbit"]
+    O --> Ship["commit + merge"]
+```
+
+| Pipeline Stage | What happens | Plugins used |
+|---------------|-------------|--------------|
+| **Plan** | User creates phased plan with tasks, specs, and dependencies | interactive-planning |
+| **Ingest** | Reads plan + project context (codebase map, tech docs, AST summaries) | mercator-ai, chronicler, code-simplifier-tldr |
+| **Match** | Finds the right skills and agent types for each phase | agent-reverse |
+| **Research** | Fetches official docs for unfamiliar tech before agents write code | Context7 / web search |
+| **Gate** | Shows full execution plan, gets user approval before touching code | — |
+| **Execute** | Creates git worktree per phase, dispatches 2-3 agents in parallel | — |
+| **Test** | Runs tests in an isolated environment per phase | orbit |
+| **Review** | Automated code review, auto-fixes critical issues | code-review (coming soon) |
+| **Commit** | Incremental commits per phase, merge back to feature branch | commit-split (coming soon) |
+
+Stages marked "coming soon" work today as personal skills — they'll become installable plugins in a future release.
 
 ## Update
 
