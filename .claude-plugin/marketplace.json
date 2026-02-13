@@ -21,7 +21,12 @@
         "name": "shihwesley"
       },
       "category": "documentation",
-      "tags": ["documentation", "tech-docs", "merkle-tree", "llm"],
+      "tags": [
+        "documentation",
+        "tech-docs",
+        "merkle-tree",
+        "llm"
+      ],
       "license": "MIT",
       "repository": "https://github.com/shihwesley/chronicler"
     },
@@ -37,7 +42,13 @@
         "name": "shihwesley"
       },
       "category": "developer-tools",
-      "tags": ["codebase", "architecture", "mapping", "merkle-tree", "change-detection"],
+      "tags": [
+        "codebase",
+        "architecture",
+        "mapping",
+        "merkle-tree",
+        "change-detection"
+      ],
       "license": "MIT",
       "repository": "https://github.com/shihwesley/mercator-ai"
     },
@@ -53,7 +64,15 @@
         "name": "shihwesley"
       },
       "category": "development",
-      "tags": ["sandbox", "docker", "python", "dspy", "memvid", "mcp", "research"],
+      "tags": [
+        "sandbox",
+        "docker",
+        "python",
+        "dspy",
+        "memvid",
+        "mcp",
+        "research"
+      ],
       "license": "MIT",
       "repository": "https://github.com/shihwesley/rlm-sandbox"
     },
@@ -69,7 +88,13 @@
         "name": "shihwesley"
       },
       "category": "developer-tools",
-      "tags": ["code-simplifier", "tldr", "ast", "token-optimization", "context-window"],
+      "tags": [
+        "code-simplifier",
+        "tldr",
+        "ast",
+        "token-optimization",
+        "context-window"
+      ],
       "license": "MIT",
       "repository": "https://github.com/shihwesley/code-simplifier-tldr"
     },
@@ -85,7 +110,13 @@
         "name": "shihwesley"
       },
       "category": "productivity",
-      "tags": ["planning", "task-tracking", "specs", "interactive", "project-management"],
+      "tags": [
+        "planning",
+        "task-tracking",
+        "specs",
+        "interactive",
+        "project-management"
+      ],
       "license": "MIT",
       "repository": "https://github.com/shihwesley/interactive-planning"
     },
@@ -101,9 +132,40 @@
         "name": "shihwesley"
       },
       "category": "developer-tools",
-      "tags": ["mcp", "reverse-engineering", "agent", "skills", "security", "manifest"],
+      "tags": [
+        "mcp",
+        "reverse-engineering",
+        "agent",
+        "skills",
+        "security",
+        "manifest"
+      ],
       "license": "MIT",
       "repository": "https://github.com/shihwesley/agent-reverse"
+    },
+    {
+      "name": "orbit",
+      "source": {
+        "source": "github",
+        "repo": "shihwesley/Orbit"
+      },
+      "description": "Ambient dev environment management — auto-switches between dev, test, staging, and prod using Docker containers, sidecars, and task-aware classification.",
+      "version": "1.2.0",
+      "author": {
+        "name": "shihwesley"
+      },
+      "category": "devops",
+      "tags": [
+        "environment-management",
+        "docker",
+        "mcp",
+        "devops",
+        "staging",
+        "testing",
+        "sidecars"
+      ],
+      "license": "MIT",
+      "repository": "https://github.com/shihwesley/Orbit"
     }
   ]
 }
