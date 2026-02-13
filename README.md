@@ -25,8 +25,8 @@ Help your AI agent understand, map, and efficiently consume codebases.
 | [**code-simplifier-tldr**](https://github.com/shihwesley/code-simplifier-tldr) | AST-based code summarization — 80%+ token savings | `/plugin install code-simplifier-tldr@shihwesley-plugins` |
 
 - **mercator-ai** — Generates `CODEBASE_MAP.md` with file purposes, architecture layers, and dependency graphs. Uses a merkle manifest (`docs/.mercator.json`) so re-runs only re-analyze changed files instead of rescanning everything.
-- **chronicler** — Watches your source files and auto-generates `.tech.md` docs alongside them. Tracks freshness per file — flags stale docs when the source changes, so documentation stays current without manual upkeep.
-- **code-simplifier-tldr** — Parses source into AST summaries (function signatures, class shapes, key types) and caches them. Agents read summaries for context and only pull full source when they need to edit. Cuts 80%+ of token usage on large codebases.
+- **chronicler** — Watches your source files and auto-generates `.tech.md` docs alongside them. Tracks freshness per file — flags stale docs when the source changes, so documentation stays current without manual upkeep. Reads mercator-ai's merkle manifest to know which files changed, so it only regenerates docs for what's actually different.
+- **code-simplifier-tldr** — Parses source into AST summaries (function signatures, class shapes, key types) and caches them. Agents read summaries for context and only pull full source when they need to edit. Integrates with mercator-ai's merkle tree for O(1) cache invalidation — only re-parses files whose hash changed. Cuts 80%+ of token usage on large codebases.
 
 ### Workflow & Environment
 
@@ -37,7 +37,7 @@ Structure your planning process and manage runtime environments without manual s
 | [**interactive-planning**](https://github.com/shihwesley/interactive-planning) | File-based planning with interactive gates and task tracking | `/plugin install interactive-planning@shihwesley-plugins` |
 | [**orbit**](https://github.com/shihwesley/Orbit) | Ambient dev environment management — auto-switches dev/test/staging/prod via Docker | `/plugin install orbit@shihwesley-plugins` |
 
-- **interactive-planning** — Creates a `task_plan.md` with phases, dependencies, and progress tracking. Pauses at interactive gates (key decision points) to ask the user before continuing — prevents agents from charging ahead on the wrong path. Supports both single-plan and multi-spec modes.
+- **interactive-planning** — Combines Manus-style file-based planning with spec-driven multi-file architecture. In task mode, it creates a single `task_plan.md` with phases and dependencies. In spec mode, it generates a manifest with separate spec files per component. Uses `AskUserQuestion` at interactive gates to pause and get user input at key decision points — prevents agents from charging ahead on the wrong path.
 - **orbit** — Classifies what you're doing (running tests, debugging, deploying) and auto-switches the right Docker environment. Manages container lifecycle, sidecars, and port mapping across dev/test/staging/prod so you never run tests against the wrong database.
 
 ### Research & Extraction
