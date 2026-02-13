@@ -49,7 +49,7 @@ Sandboxed experimentation and capability extraction from external sources.
 | [**rlm-sandbox**](https://github.com/shihwesley/rlm-sandbox) | Docker sandbox for Python/DSPy + memvid knowledge store (16 MCP tools) | `/plugin install rlm-sandbox@shihwesley-plugins` |
 | [**agent-reverse**](https://github.com/shihwesley/agent-reverse) | Reverse engineer capabilities from repos, configs, articles into your workflow | `/plugin install agent-reverse@shihwesley-plugins` |
 
-- **rlm-sandbox** — Spins up an isolated Docker container with Python, DSPy, and a memvid-backed knowledge store. Exposes 16 MCP tools for code execution, sub-agent orchestration, session persistence, and research automation — all sandboxed so nothing touches your host machine.
+- **rlm-sandbox** — My take on the [Recursive Language Model](https://arxiv.org/abs/2502.09382) concept from the published paper. Spins up an isolated Docker container with Python, DSPy, and a memvid-backed knowledge store. Exposes 16 MCP tools for code execution, sub-agent orchestration, session persistence, and research automation — all sandboxed so nothing touches your host machine.
 - **agent-reverse** — Point it at a GitHub repo, local config, binary, or article and it extracts capabilities, patterns, and skills into your agent workflow. Includes security scanning, manifest tracking, and cross-agent restore so you can port setups between machines.
 
 ### Orchestration (preview)
@@ -88,6 +88,68 @@ graph LR
 | **Commit** | Incremental commits per phase, merge back to feature branch | commit-split (coming soon) |
 
 Stages marked "coming soon" work today as personal skills — they'll become installable plugins in a future release.
+
+## Context Window Management
+
+A recurring problem with AI agents: they burn through context reading full source files, then lose track of earlier work when the window fills up. These plugins include a built-in protocol to prevent that.
+
+### The TLDR Read Protocol
+
+A `PreToolUse` hook intercepts every `Read` tool call. Instead of returning the full file, it returns an AST summary — function signatures, class shapes, imports, key types — at ~200 tokens per file instead of thousands. Agents get enough structure to navigate and decide what to look at. When they need the actual code (to edit a specific function, for example), they request a line range, which bypasses the hook.
+
+How it works:
+
+1. Agent calls `Read` on a file
+2. Hook checks the TLDR cache (keyed by merkle hash from mercator-ai, or MD5 fallback)
+3. Cache hit → returns the AST summary immediately
+4. Cache miss → generates a language-specific summary (Python, TypeScript, Swift, Markdown all have dedicated parsers), caches it, returns the summary
+5. Agent requests `offset`/`limit` → hook steps aside, full content returned
+
+**What gets summarized:**
+- Python — imports, constants, class/function signatures with type hints
+- TypeScript/JavaScript — exports, classes with methods, functions, types/interfaces, enums
+- Swift — structs/classes/enums/protocols, properties with types, full function signatures
+- Markdown — table of contents, headings, code block languages, key terms, links
+
+**What bypasses the hook:**
+- Small files (<100 lines) — not worth summarizing
+- Config files (JSON, YAML, TOML, lock files) — structure is the content
+- Test files — agents need full assertions to verify behavior
+- Line-range requests — the agent already knows what it wants
+
+### Token savings in practice
+
+| Scenario | Without TLDR | With TLDR | Savings |
+|----------|-------------|-----------|---------|
+| Read one large file | ~2,500 tokens | ~200 tokens | 92% |
+| Survey 100-file codebase | ~250,000 tokens | ~20,000 tokens | 92% |
+| Merkle diff + TLDR (3 files changed out of 100) | ~250,000 tokens | ~650 tokens | 99.7% |
+
+The merkle integration is the big win. When mercator-ai's manifest tells code-simplifier-tldr which files actually changed, the agent skips everything else entirely. On a 100-file codebase where 3 files changed, you go from 250k tokens to 650.
+
+### Setup
+
+The hook is configured in `.claude/settings.json`:
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/tldr-read-enforcer.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Cache lives at `.claude/cache/tldr/`. Files are named by hash for O(1) lookup. The cache self-populates on first read and invalidates when the merkle hash or file content changes.
 
 ## Update
 
