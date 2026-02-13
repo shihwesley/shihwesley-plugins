@@ -88,6 +88,22 @@
       "tags": ["planning", "task-tracking", "specs", "interactive", "project-management"],
       "license": "MIT",
       "repository": "https://github.com/shihwesley/interactive-planning"
+    },
+    {
+      "name": "agent-reverse",
+      "source": {
+        "source": "github",
+        "repo": "shihwesley/agent-reverse"
+      },
+      "description": "Reverse engineer and extract capabilities from any source — repos, configs, binaries, articles — into your agent workflow. Security scanning, manifest tracking, cross-agent restore.",
+      "version": "2.1.0",
+      "author": {
+        "name": "shihwesley"
+      },
+      "category": "developer-tools",
+      "tags": ["mcp", "reverse-engineering", "agent", "skills", "security", "manifest"],
+      "license": "MIT",
+      "repository": "https://github.com/shihwesley/agent-reverse"
     }
   ]
 }
