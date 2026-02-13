@@ -4,6 +4,22 @@ A personal collection of Claude Code plugins built to sharpen AI-assisted develo
 
 Seven plugins across three categories, each solving a specific friction point in agent-driven development. Together, they compose into an automated orchestration pipeline that takes a plan from outline to committed code.
 
+## Table of Contents
+
+- [Install](#install)
+- [Plugins](#plugins)
+  - [Codebase Intelligence](#codebase-intelligence)
+  - [Workflow & Environment](#workflow--environment)
+  - [Research & Extraction](#research--extraction)
+  - [Orchestration (preview)](#orchestration-preview)
+- [How They Work Together](#how-they-work-together)
+- [Context Window Management](#context-window-management)
+  - [The TLDR Read Protocol](#the-tldr-read-protocol)
+  - [Token savings in practice](#token-savings-in-practice)
+  - [Setup](#setup)
+- [Update](#update)
+- [License](#license)
+
 ## Install
 
 ```bash
