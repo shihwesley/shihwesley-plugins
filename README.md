@@ -49,7 +49,7 @@ Sandboxed experimentation and capability extraction from external sources.
 | [**rlm-sandbox**](https://github.com/shihwesley/rlm-sandbox) | Docker sandbox for Python/DSPy + memvid knowledge store (16 MCP tools) | `/plugin install rlm-sandbox@shihwesley-plugins` |
 | [**agent-reverse**](https://github.com/shihwesley/agent-reverse) | Reverse engineer capabilities from repos, configs, articles into your workflow | `/plugin install agent-reverse@shihwesley-plugins` |
 
-- **rlm-sandbox** — My take on the [Recursive Language Model](https://arxiv.org/abs/2502.09382) concept from the published paper. Spins up an isolated Docker container with Python, DSPy, and a memvid-backed knowledge store. Exposes 16 MCP tools for code execution, sub-agent orchestration, session persistence, and research automation — all sandboxed so nothing touches your host machine.
+- **rlm-sandbox** — My take on the [Recursive Language Model](https://arxiv.org/abs/2512.24601) concept from the published paper. Spins up an isolated Docker container with Python, DSPy, and a memvid-backed knowledge store. Exposes 16 MCP tools for code execution, sub-agent orchestration, session persistence, and research automation — all sandboxed so nothing touches your host machine.
 - **agent-reverse** — Point it at a GitHub repo, local config, binary, or article and it extracts capabilities, patterns, and skills into your agent workflow. Includes security scanning, manifest tracking, and cross-agent restore so you can port setups between machines.
 
 ### Orchestration (preview)
