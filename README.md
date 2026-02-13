@@ -38,11 +38,11 @@ Help your AI agent understand, map, and efficiently consume codebases.
 |--------|-------------|---------|
 | [**mercator-ai**](https://github.com/shihwesley/mercator-ai) | Merkle-enhanced codebase mapping with O(1) change detection | `/plugin install mercator-ai@shihwesley-plugins` |
 | [**chronicler**](https://github.com/shihwesley/chronicler) | Ambient `.tech.md` generation with freshness tracking | `/plugin install chronicler@shihwesley-plugins` |
-| [**code-simplifier-tldr**](https://github.com/shihwesley/code-simplifier-tldr) | AST-based code summarization — 80%+ token savings | `/plugin install code-simplifier-tldr@shihwesley-plugins` |
+| [**code-simplifier-tldr**](https://github.com/shihwesley/code-simplifier-tldr) | TLDR-aware codebase simplifier — surveys via AST summaries, edits surgically | `/plugin install code-simplifier-tldr@shihwesley-plugins` |
 
 - **mercator-ai** — Generates `CODEBASE_MAP.md` with file purposes, architecture layers, and dependency graphs. Uses a merkle manifest (`docs/.mercator.json`) so re-runs only re-analyze changed files instead of rescanning everything.
 - **chronicler** — Watches your source files and auto-generates `.tech.md` docs alongside them. Tracks freshness per file — flags stale docs when the source changes, so documentation stays current without manual upkeep. Reads mercator-ai's merkle manifest to know which files changed, so it only regenerates docs for what's actually different.
-- **code-simplifier-tldr** — Parses source into AST summaries (function signatures, class shapes, key types) and caches them. Agents read summaries for context and only pull full source when they need to edit. Integrates with mercator-ai's merkle tree for O(1) cache invalidation — only re-parses files whose hash changed. Cuts 80%+ of token usage on large codebases.
+- **code-simplifier-tldr** — A TLDR-aware agent that simplifies your codebase. Reads AST summaries to survey file structure, identifies simplification targets (dead code, redundant abstractions, over-engineered patterns), then requests only the specific line ranges it needs to edit. Integrates with mercator-ai's merkle tree so it only considers files whose hash actually changed. Logs every change to a simplification log for auditability.
 
 ### Workflow & Environment
 
