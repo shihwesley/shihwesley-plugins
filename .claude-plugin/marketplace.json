@@ -5,8 +5,8 @@
     "url": "https://github.com/shihwesley"
   },
   "metadata": {
-    "description": "Claude Code plugins by shihwesley — codebase mapping, documentation, research sandboxes, and developer productivity tools",
-    "version": "1.0.0"
+    "description": "Claude Code plugins by shihwesley — codebase mapping, documentation, research sandboxes, reverse engineering, environment management, and developer productivity tools",
+    "version": "1.1.0"
   },
   "plugins": [
     {
