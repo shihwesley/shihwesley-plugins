@@ -1,0 +1,93 @@
+{
+  "name": "shihwesley-plugins",
+  "owner": {
+    "name": "shihwesley",
+    "url": "https://github.com/shihwesley"
+  },
+  "metadata": {
+    "description": "Claude Code plugins by shihwesley — codebase mapping, documentation, research sandboxes, and developer productivity tools",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "chronicler",
+      "source": {
+        "source": "github",
+        "repo": "shihwesley/chronicler"
+      },
+      "description": "Ambient .tech.md generation — auto-documents and tracks freshness of your codebase",
+      "version": "0.0.2",
+      "author": {
+        "name": "shihwesley"
+      },
+      "category": "documentation",
+      "tags": ["documentation", "tech-docs", "merkle-tree", "llm"],
+      "license": "MIT",
+      "repository": "https://github.com/shihwesley/chronicler"
+    },
+    {
+      "name": "mercator-ai",
+      "source": {
+        "source": "github",
+        "repo": "shihwesley/mercator-ai"
+      },
+      "description": "Merkle-enhanced codebase mapping for AI agents. O(1) change detection, parallel subagent analysis.",
+      "version": "1.0.0",
+      "author": {
+        "name": "shihwesley"
+      },
+      "category": "developer-tools",
+      "tags": ["codebase", "architecture", "mapping", "merkle-tree", "change-detection"],
+      "license": "MIT",
+      "repository": "https://github.com/shihwesley/mercator-ai"
+    },
+    {
+      "name": "rlm-sandbox",
+      "source": {
+        "source": "github",
+        "repo": "quartershots/rlm-sandbox"
+      },
+      "description": "Docker sandbox for Python/DSPy execution with memvid-backed knowledge store. 16 MCP tools for code execution, sub-agents, session persistence, and research automation.",
+      "version": "1.0.0",
+      "author": {
+        "name": "shihwesley"
+      },
+      "category": "development",
+      "tags": ["sandbox", "docker", "python", "dspy", "memvid", "mcp", "research"],
+      "license": "MIT",
+      "repository": "https://github.com/quartershots/rlm-sandbox"
+    },
+    {
+      "name": "code-simplifier-tldr",
+      "source": {
+        "source": "github",
+        "repo": "shihwesley/code-simplifier-tldr"
+      },
+      "description": "TLDR-aware code simplifier — uses AST summaries for context, full reads only for target files. 80%+ token savings on large codebases.",
+      "version": "1.0.0",
+      "author": {
+        "name": "shihwesley"
+      },
+      "category": "developer-tools",
+      "tags": ["code-simplifier", "tldr", "ast", "token-optimization", "context-window"],
+      "license": "MIT",
+      "repository": "https://github.com/shihwesley/code-simplifier-tldr"
+    },
+    {
+      "name": "interactive-planning",
+      "source": {
+        "source": "github",
+        "repo": "shihwesley/interactive-planning"
+      },
+      "description": "Manus-style file-based planning with interactive gates and native task tracking. Supports task-based and spec-driven modes.",
+      "version": "2.0.0",
+      "author": {
+        "name": "shihwesley"
+      },
+      "category": "productivity",
+      "tags": ["planning", "task-tracking", "specs", "interactive", "project-management"],
+      "license": "MIT",
+      "repository": "https://github.com/shihwesley/interactive-planning"
+    }
+  ]
+}
