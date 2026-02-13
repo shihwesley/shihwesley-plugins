@@ -82,8 +82,8 @@
         "source": "github",
         "repo": "shihwesley/code-simplifier-tldr"
       },
-      "description": "TLDR-aware code simplifier — uses AST summaries for context, full reads only for target files. 80%+ token savings on large codebases.",
-      "version": "1.0.0",
+      "description": "TLDR-aware code simplifier — uses AST summaries for context, full reads only for target files. 80%+ token savings on large codebases. Merkle-integrated for O(1) change detection when used with mercator-ai.",
+      "version": "2.0.0",
       "author": {
         "name": "shihwesley"
       },
