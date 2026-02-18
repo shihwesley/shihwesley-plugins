@@ -53,28 +53,28 @@
       "repository": "https://github.com/shihwesley/mercator-ai"
     },
     {
-      "name": "rlm-sandbox",
+      "name": "neo-research",
       "source": {
         "source": "github",
-        "repo": "shihwesley/rlm-sandbox"
+        "repo": "shihwesley/neo-research"
       },
-      "description": "Research pipeline + sandboxed Python execution. Turns any topic into agent expertise: question tree → source discovery → zero-context fetch → .mv2 indexing → REPL distillation → expertise artifact. Also runs Python in isolated Docker containers.",
+      "description": "Research pipeline for Claude Code. One command turns any topic into agent expertise: question tree, zero-context fetch, .mv2 indexing, REPL distillation, skill/subagent generation. Also runs Python in isolated Docker containers.",
       "version": "2.0.0",
       "author": {
         "name": "shihwesley"
       },
       "category": "development",
       "tags": [
+        "research",
+        "knowledge",
+        "expertise",
         "sandbox",
-        "docker",
         "python",
-        "dspy",
         "memvid",
-        "mcp",
-        "research"
+        "mcp"
       ],
       "license": "MIT",
-      "repository": "https://github.com/shihwesley/rlm-sandbox"
+      "repository": "https://github.com/shihwesley/neo-research"
     },
     {
       "name": "code-simplifier-tldr",
