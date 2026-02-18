@@ -58,8 +58,8 @@
         "source": "github",
         "repo": "shihwesley/rlm-sandbox"
       },
-      "description": "Docker sandbox for Python/DSPy execution with memvid-backed knowledge store. 16 MCP tools for code execution, sub-agents, session persistence, and research automation.",
-      "version": "1.3.0",
+      "description": "Research pipeline + sandboxed Python execution. Turns any topic into agent expertise: question tree → source discovery → zero-context fetch → .mv2 indexing → REPL distillation → expertise artifact. Also runs Python in isolated Docker containers.",
+      "version": "2.0.0",
       "author": {
         "name": "shihwesley"
       },
