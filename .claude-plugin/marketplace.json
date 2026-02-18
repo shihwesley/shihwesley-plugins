@@ -104,8 +104,8 @@
         "source": "github",
         "repo": "shihwesley/interactive-planning"
       },
-      "description": "Manus-style file-based planning with interactive gates and native task tracking. Supports task-based and spec-driven modes.",
-      "version": "2.0.0",
+      "description": "Manus-style file-based planning with interactive gates, architecture review, and native task tracking. Supports task-based and spec-driven modes with 8-dimension arch review before implementation.",
+      "version": "4.2.0",
       "author": {
         "name": "shihwesley"
       },
