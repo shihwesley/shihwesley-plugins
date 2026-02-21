@@ -58,8 +58,8 @@
         "source": "github",
         "repo": "shihwesley/neo-research"
       },
-      "description": "Research pipeline for Claude Code. One command turns any topic into agent expertise: question tree, zero-context fetch, .mv2 indexing, REPL distillation, skill/subagent generation. Also runs Python in isolated Docker containers.",
-      "version": "2.0.0",
+      "description": "Research pipeline for Claude Code. One command turns any topic into agent expertise: question tree, zero-context fetch, .mv2 indexing, REPL distillation, skill/subagent generation. Domain-split Apple API stores, coupling assessment, skill graph recommendations. Also runs Python in isolated Docker containers.",
+      "version": "2.1.0",
       "author": {
         "name": "shihwesley"
       },
