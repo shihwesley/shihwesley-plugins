@@ -11,6 +11,7 @@ Seven plugins across three categories, each solving a specific friction point in
   - [Codebase Intelligence](#codebase-intelligence)
   - [Workflow & Environment](#workflow--environment)
   - [Research & Extraction](#research--extraction)
+  - [Skill Graphs](#skill-graphs)
   - [Orchestration (preview)](#orchestration-preview)
 - [How They Work Together](#how-they-work-together)
 - [Context Window Management](#context-window-management)
@@ -65,8 +66,30 @@ Sandboxed experimentation and capability extraction from external sources.
 | [**neo-research**](https://github.com/shihwesley/neo-research) | Research pipeline — turns any topic into agent expertise via structured fetch, .mv2 indexing, and skill generation (21 MCP tools) | `/plugin install neo-research@shihwesley-plugins` |
 | [**agent-reverse**](https://github.com/shihwesley/agent-reverse) | Reverse engineer capabilities from repos, configs, articles into your workflow | `/plugin install agent-reverse@shihwesley-plugins` |
 
-- **neo-research** — Research pipeline for Claude Code. One command turns any topic into agent expertise: question tree, zero-context fetch, .mv2 indexing, REPL distillation, skill/subagent generation. Also runs Python in isolated Docker containers with 21 MCP tools — code execution, sub-agent orchestration, session persistence, and research automation, all sandboxed so nothing touches your host machine.
+- **neo-research** — Research pipeline for Claude Code. One command turns any topic into agent expertise: question tree, zero-context fetch, .mv2 indexing, REPL distillation, skill/subagent generation. Includes coupling assessment that flags domains where sub-topics form a web — when detected, recommends creating a skill graph (see below). Also runs Python in isolated Docker containers with 21 MCP tools — code execution, sub-agent orchestration, session persistence, and research automation, all sandboxed so nothing touches your host machine.
 - **agent-reverse** — Point it at a GitHub repo, local config, binary, or article and it extracts capabilities, patterns, and skills into your agent workflow. Includes security scanning, manifest tracking, and cross-agent restore so you can port setups between machines.
+
+### Skill Graphs
+
+When you accumulate enough skills, docs, and agents for a domain, agents start struggling to find the right one. They grep linearly through directories, load files they don't need, and burn context on irrelevant content.
+
+Skill graphs solve this. They're navigable Maps of Content (MOCs) that give agents a 3-read path to the right knowledge: read the index → pick a MOC → read the target file. Instead of scanning 35+ files, the agent reads 3.
+
+The concept comes from [arscontexta](https://github.com/agenticnotetaking/arscontexta), a Claude Code plugin that builds Zettelkasten-style knowledge systems using Niklas Luhmann's slip-box methodology — MOCs as hubs, wikilinks for connections, progressive disclosure through layers. Their approach is designed for personal knowledge management: you describe how you think, have a conversation, and get a second brain as markdown files.
+
+We took the MOC structure and adapted it for a different problem: agent navigation of domain knowledge. Instead of organizing personal notes, our skill graphs organize skills, docs, agents, and API references so Claude Code agents can find what they need without reading everything. The differences from arscontexta's approach:
+
+- **Agents are the consumers, not humans.** MOCs are machine-parseable with file paths and one-line descriptions, not prose paragraphs. An agent reads a MOC and knows exactly which file to open next.
+- **TLDR integration.** The read hook serves MOC summaries at ~400 tokens. Agents pick their MOC from the summary without reading the full index. Navigation decisions happen at the summary level.
+- **Knowledge store as leaf layer.** Instead of raw file reads at the bottom, agents query domain-specific `.mv2` stores for API details. A search returns scored 500-char snippets instead of dumping an entire framework doc into context.
+- **Coupling detection triggers graph creation.** neo-research assesses coupling during its question tree phase — if 3+ sub-topics reference each other, it recommends creating a skill graph. The `/create-skill-graph` command then builds the graph from the research output automatically.
+- **Domain-scoped stores.** Apple's 300+ framework docs are split into 15 domain stores (spatial-computing, swiftui, ml-ai, etc.) so each MOC searches only its relevant domain.
+
+The `/create-skill-graph` command works from two sources:
+1. **From research output** — uses `question-tree.md` branches as MOC candidates. Each branch with 2+ sub-questions becomes a MOC.
+2. **From existing files** — inventories your `.claude/commands/`, `.claude/skills/`, `.claude/docs/`, and `.claude/agents/`, clusters by topic, and turns each cluster into a MOC.
+
+Currently ships as a command skill (`/create-skill-graph`), not a standalone plugin. The first graph built with it covers iOS/visionOS/Swift development — 10 MOCs mapping 35+ files across 8 command skills, 2 agents, 24 docs, and 15 domain knowledge stores.
 
 ### Orchestration (preview)
 
@@ -87,6 +110,8 @@ graph LR
     CH["chronicler"] --> O
     TLDR["code-simplifier-tldr"] --> O
     AR["agent-reverse"] --> O
+    NR["neo-research"] --> SG["skill graph"]
+    SG --> O
     O --> OB["orbit"]
     O --> Ship["commit + merge"]
 ```
@@ -96,7 +121,8 @@ graph LR
 | **Plan** | User creates phased plan with tasks, specs, and dependencies | interactive-planning |
 | **Ingest** | Reads plan + project context (codebase map, tech docs, AST summaries) | mercator-ai, chronicler, code-simplifier-tldr |
 | **Match** | Finds the right skills and agent types for each phase | agent-reverse |
-| **Research** | Fetches official docs for unfamiliar tech before agents write code | Context7 / web search |
+| **Research** | Fetches official docs for unfamiliar tech before agents write code | neo-research, Context7 |
+| **Graph** | If coupling detected, agents navigate domain knowledge via skill graph MOCs instead of linear file reads | neo-research → /create-skill-graph |
 | **Gate** | Shows full execution plan, gets user approval before touching code | — |
 | **Execute** | Creates git worktree per phase, dispatches 2-3 agents in parallel | — |
 | **Test** | Runs tests in an isolated environment per phase | orbit |
