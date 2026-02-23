@@ -36,8 +36,8 @@
         "source": "github",
         "repo": "shihwesley/mercator-ai"
       },
-      "description": "Merkle-enhanced codebase mapping for AI agents. O(1) change detection, parallel subagent analysis.",
-      "version": "1.0.0",
+      "description": "Merkle-enhanced codebase mapping for AI agents. O(1) change detection, zero-token staleness prevention, parallel subagent analysis. Creates docs/CODEBASE_MAP.md and docs/.mercator.json merkle manifest.",
+      "version": "1.0.1",
       "author": {
         "name": "shihwesley"
       },
