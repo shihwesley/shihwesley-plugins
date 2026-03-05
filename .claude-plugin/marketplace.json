@@ -5,7 +5,7 @@
     "url": "https://github.com/shihwesley"
   },
   "metadata": {
-    "description": "Claude Code plugins by shihwesley — codebase mapping, documentation, research sandboxes, reverse engineering, environment management, and developer productivity tools",
+    "description": "Claude Code plugins by shihwesley \u2014 codebase mapping, documentation, research sandboxes, reverse engineering, environment management, and developer productivity tools",
     "version": "1.1.0"
   },
   "plugins": [
@@ -15,7 +15,7 @@
         "source": "github",
         "repo": "shihwesley/chronicler"
       },
-      "description": "Ambient .tech.md generation — auto-documents and tracks freshness of your codebase",
+      "description": "Ambient .tech.md generation \u2014 auto-documents and tracks freshness of your codebase",
       "version": "0.0.2",
       "author": {
         "name": "shihwesley"
@@ -82,7 +82,7 @@
         "source": "github",
         "repo": "shihwesley/code-simplifier-tldr"
       },
-      "description": "TLDR-aware code simplifier — uses AST summaries for context, full reads only for target files. 80%+ token savings on large codebases. Merkle-integrated for O(1) change detection when used with mercator-ai.",
+      "description": "TLDR-aware code simplifier \u2014 uses AST summaries for context, full reads only for target files. 80%+ token savings on large codebases. Merkle-integrated for O(1) change detection when used with mercator-ai.",
       "version": "2.0.0",
       "author": {
         "name": "shihwesley"
@@ -105,7 +105,7 @@
         "repo": "shihwesley/interactive-planning"
       },
       "description": "Manus-style file-based planning with interactive gates, architecture review, and native task tracking. Supports task-based and spec-driven modes with categorized plan directories (feat/fix/refactor/review/test/polish/general) and auto-detection from user input.",
-      "version": "5.0.0",
+      "version": "5.1.0",
       "author": {
         "name": "shihwesley"
       },
@@ -126,7 +126,7 @@
         "source": "github",
         "repo": "shihwesley/agent-reverse"
       },
-      "description": "Reverse engineer and extract capabilities from any source — repos, configs, binaries, articles — into your agent workflow. Security scanning, manifest tracking, cross-agent restore.",
+      "description": "Reverse engineer and extract capabilities from any source \u2014 repos, configs, binaries, articles \u2014 into your agent workflow. Security scanning, manifest tracking, cross-agent restore.",
       "version": "2.1.0",
       "author": {
         "name": "shihwesley"
@@ -149,7 +149,7 @@
         "source": "github",
         "repo": "shihwesley/Orbit"
       },
-      "description": "Ambient dev environment management — auto-switches between dev, test, staging, and prod using Docker containers, sidecars, and task-aware classification.",
+      "description": "Ambient dev environment management \u2014 auto-switches between dev, test, staging, and prod using Docker containers, sidecars, and task-aware classification.",
       "version": "1.2.0",
       "author": {
         "name": "shihwesley"
