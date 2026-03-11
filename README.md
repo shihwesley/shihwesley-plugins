@@ -4,6 +4,19 @@ A personal collection of Claude Code plugins built to sharpen AI-assisted develo
 
 Seven plugins across three categories, each solving a specific friction point in agent-driven development. Together, they compose into an automated orchestration pipeline that takes a plan from outline to committed code.
 
+## Anthropic Skill Guide Compliant
+
+All skills in this repository and across all shihwesley plugins follow [Anthropic's Complete Guide to Building Skills for Claude](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf) (January 2026). This means:
+
+- Every skill lives in its own folder with a `SKILL.md` entry point
+- Frontmatter uses kebab-case `name` fields matching folder names
+- Descriptions follow the `[what it does] + [when to use it] + [key capabilities]` formula with explicit trigger phrases
+- Progressive disclosure: core instructions in SKILL.md, detailed docs in `references/`
+- No README.md inside skill folders
+- A `skill-template/` is provided for creating new compliant skills
+
+**Skills included:** `release`, `create-skill-graph`, `traverse-template`, `skill-template`, `interactive-planning`, `orchestrator`
+
 ## Table of Contents
 
 - [Install](#install)
