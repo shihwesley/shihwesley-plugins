@@ -1,0 +1,195 @@
+{
+  "version": 2,
+  "description": "Maps keywords found in plan phases to skills and agent types for dispatch",
+  "graphPaths": {
+    "swift": ".claude/docs/swift-graph/index.md",
+    "swiftui": ".claude/docs/swift-graph/index.md",
+    "tca": ".claude/docs/swift-graph/index.md",
+    "ios": ".claude/docs/swift-graph/index.md",
+    "visionos": ".claude/docs/swift-graph/index.md",
+    "storekit": ".claude/docs/swift-graph/index.md",
+    "grdb": ".claude/docs/swift-graph/index.md",
+    "sqlite": ".claude/docs/swift-graph/index.md",
+    "networking": ".claude/docs/swift-graph/index.md",
+    "concurrency": ".claude/docs/swift-graph/index.md",
+    "haptics": ".claude/docs/swift-graph/index.md",
+    "localization": ".claude/docs/swift-graph/index.md",
+    "hig": ".claude/docs/swift-graph/index.md",
+    "accessibility": ".claude/docs/swift-graph/index.md",
+    "design": ".claude/docs/swift-graph/index.md",
+    "logging": ".claude/docs/swift-graph/index.md",
+    "testing": ".claude/docs/swift-graph/index.md",
+    "coredata": ".claude/docs/swift-graph/index.md",
+    "persistence": ".claude/docs/swift-graph/index.md",
+    "realitykit": ".claude/docs/swift-graph/index.md",
+    "arkit": ".claude/docs/swift-graph/index.md",
+    "spatial": ".claude/docs/swift-graph/index.md"
+  },
+  "keywords": {
+    "swift": {
+      "skills": ["swift-engineering:swift-engineer", "swift-engineering:swift-architect"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "Vanilla Swift implementation"
+    },
+    "swiftui": {
+      "skills": ["swift-engineering:swiftui-specialist", "swift-engineering:swiftui-patterns"],
+      "agentType": "swift-engineering:swiftui-specialist",
+      "description": "SwiftUI views and UI patterns"
+    },
+    "tca": {
+      "skills": ["swift-engineering:tca-architect", "swift-engineering:tca-engineer"],
+      "agentType": "swift-engineering:tca-engineer",
+      "description": "The Composable Architecture features"
+    },
+    "ios": {
+      "skills": ["swift-engineering:ios-hig", "swift-engineering:swift-engineer"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "iOS platform features"
+    },
+    "storekit": {
+      "skills": ["swift-engineering:storekit"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "In-app purchases and subscriptions"
+    },
+    "grdb": {
+      "skills": ["swift-engineering:grdb"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "GRDB database layer"
+    },
+    "sqlite": {
+      "skills": ["swift-engineering:sqlite-data"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "SQLiteData persistence"
+    },
+    "networking": {
+      "skills": ["swift-engineering:swift-networking"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "Network.framework connections"
+    },
+    "api": {
+      "skills": ["feature-dev:code-architect", "feature-dev:feature-dev"],
+      "agentType": "feature-dev:code-architect",
+      "description": "API endpoints and backend"
+    },
+    "frontend": {
+      "skills": ["feature-dev:feature-dev"],
+      "agentType": "feature-dev:feature-dev",
+      "description": "Frontend web development"
+    },
+    "react": {
+      "skills": ["feature-dev:feature-dev"],
+      "agentType": "feature-dev:feature-dev",
+      "description": "React components and hooks"
+    },
+    "node": {
+      "skills": ["feature-dev:feature-dev"],
+      "agentType": "feature-dev:feature-dev",
+      "description": "Node.js backend"
+    },
+    "python": {
+      "skills": ["feature-dev:feature-dev"],
+      "agentType": "feature-dev:feature-dev",
+      "description": "Python implementation"
+    },
+    "database": {
+      "skills": ["feature-dev:code-explorer"],
+      "agentType": "feature-dev:code-explorer",
+      "description": "Database schema and queries"
+    },
+    "test": {
+      "skills": ["swift-engineering:swift-test-creator", "superpowers:test-driven-development"],
+      "agentType": "swift-engineering:swift-test-creator",
+      "description": "Test creation and TDD"
+    },
+    "security": {
+      "skills": ["feature-dev:code-reviewer"],
+      "agentType": "feature-dev:code-reviewer",
+      "description": "Security review and hardening"
+    },
+    "architecture": {
+      "skills": ["feature-dev:code-architect", "swift-engineering:swift-architect"],
+      "agentType": "feature-dev:code-architect",
+      "description": "Architecture design and planning"
+    },
+    "refactor": {
+      "skills": ["swift-engineering:swift-modernizer"],
+      "agentType": "swift-engineering:swift-modernizer",
+      "description": "Code modernization and refactoring"
+    },
+    "localization": {
+      "skills": ["swift-engineering:localization"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "i18n and String Catalogs"
+    },
+    "concurrency": {
+      "skills": ["swift-engineering:modern-swift"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "async/await and Swift concurrency"
+    },
+    "haptics": {
+      "skills": ["swift-engineering:haptics"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "Haptic feedback patterns"
+    },
+    "documentation": {
+      "skills": ["swift-engineering:swift-documenter"],
+      "agentType": "swift-engineering:swift-documenter",
+      "description": "Documentation generation"
+    },
+    "diagnostics": {
+      "skills": ["swift-engineering:swift-diagnostics"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "Debugging and diagnostic workflows"
+    },
+    "hig": {
+      "skills": ["apple-hig-skills:hig-foundations", "swift-engineering:ios-hig"],
+      "agentType": "swift-engineering:swiftui-specialist",
+      "description": "Apple Human Interface Guidelines — design + implementation"
+    },
+    "accessibility": {
+      "skills": ["apple-hig-skills:hig-foundations", "swift-engineering:ios-hig"],
+      "agentType": "swift-engineering:swiftui-specialist",
+      "description": "VoiceOver, Dynamic Type, accessibility patterns"
+    },
+    "logging": {
+      "skills": ["swift-engineering:swift-engineer"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "os.Logger, swift-log, OSSignposter, OSLogStore"
+    },
+    "coredata": {
+      "skills": ["core-data-expert:core-data-expert"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "Core Data stack, fetch, threading, migrations, CloudKit"
+    },
+    "visionos": {
+      "skills": ["swift-engineering:swiftui-specialist"],
+      "agentType": "visionos-specialist",
+      "description": "visionOS spatial computing, RealityKit, ARKit"
+    },
+    "realitykit": {
+      "skills": ["swift-engineering:swiftui-specialist"],
+      "agentType": "visionos-specialist",
+      "description": "RealityKit ECS, entities, components, systems"
+    },
+    "persistence": {
+      "skills": ["swift-engineering:sqlite-data", "swift-engineering:grdb"],
+      "agentType": "swift-engineering:swift-engineer",
+      "description": "SwiftData, Core Data, GRDB, SQLiteData persistence"
+    }
+  },
+  "languageDetection": {
+    ".swift": ["swift"],
+    ".ts": ["node", "frontend"],
+    ".tsx": ["react", "frontend"],
+    ".js": ["node", "frontend"],
+    ".jsx": ["react", "frontend"],
+    ".py": ["python"],
+    ".go": ["api"],
+    ".rs": ["api"],
+    ".sql": ["database"],
+    ".xcdatamodeld": ["database", "ios"],
+    ".storekit": ["storekit", "ios"]
+  },
+  "fallbackAgentType": "general-purpose",
+  "fallbackSkills": []
+}
