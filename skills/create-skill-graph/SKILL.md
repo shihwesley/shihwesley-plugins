@@ -1,7 +1,10 @@
 ---
-description: "Create a skill graph for a domain — from research output or from existing skills/docs"
+name: create-skill-graph
+description: "Create a navigable skill graph for a domain from research output or existing skills/docs. Use when user says /create-skill-graph, wants to organize skills into MOCs, build a knowledge graph, or structure domain docs into a navigable hierarchy. Accepts a domain slug with --from-research or --from-existing flags."
 argument-hint: "<domain-slug> [--from-research | --from-existing]"
-user-invocable: true
+metadata:
+  author: shihwesley
+  version: 1.0.0
 ---
 
 # /create-skill-graph
@@ -30,15 +33,15 @@ ELSE:
 ## Step 2: Derive MOC Structure
 
 **From research** (question-tree.md drives the structure):
-- Each top-level branch in the question tree → candidate MOC
-- Branches with <2 sub-questions → merge into a related MOC
-- Branches with >8 sub-questions → consider splitting
+- Each top-level branch in the question tree -> candidate MOC
+- Branches with <2 sub-questions -> merge into a related MOC
+- Branches with >8 sub-questions -> consider splitting
 - Target: 5-10 MOCs
 
 **From existing files**:
 - Scan `.claude/commands/`, `.claude/skills/`, `.claude/docs/`, `.claude/agents/` for domain-related files
 - Cluster by topic (use filenames, frontmatter descriptions, and content keywords)
-- Each cluster with 2+ files → candidate MOC
+- Each cluster with 2+ files -> candidate MOC
 - Target: 5-10 MOCs
 
 Present the proposed MOC structure to the user:
@@ -56,11 +59,11 @@ Create the directory and files:
 
 ```
 .claude/docs/<slug>-graph/
-├── index.md            ← Hub with all MOC descriptions
-├── <moc-1>.md          ← Each MOC links to skills/docs/agents
+├── index.md            <- Hub with all MOC descriptions
+├── <moc-1>.md          <- Each MOC links to skills/docs/agents
 ├── <moc-2>.md
 ├── ...
-└── traverse.md         ← Copy from swift-graph, adapt domain name
+└── traverse.md         <- Copy from swift-graph, adapt domain name
 ```
 
 **Index format:**
@@ -94,11 +97,11 @@ keywords: [<relevant keywords>]
 <Orientation paragraph>
 
 ## <Section>
-- **Skill/Doc/Agent: `name`** → `<file path>`
+- **Skill/Doc/Agent: `name`** -> `<file path>`
   <one-line description of what this covers and when to use it>
 
 ## Cross-References
-- Related MOC → [[<other-moc>.md]]
+- Related MOC -> [[<other-moc>.md]]
 ```
 
 **From research**: MOC content comes from the expertise.md sections. Each section's key points become the MOC descriptions. If the research generated a skill or subagent, link those too.

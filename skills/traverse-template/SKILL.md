@@ -1,6 +1,9 @@
 ---
-description: "Navigation protocol template for skill graphs. Copy and adapt for your domain."
-agent-only: true
+name: traverse-template
+description: "Navigation protocol template for skill graphs. Copy and adapt per domain to teach agents how to efficiently traverse MOC hierarchies. Agent-only — not user-invocable. Use when building a new skill graph that needs a traversal protocol."
+metadata:
+  author: shihwesley
+  version: 1.0.0
 ---
 
 # <Domain> Skill Graph — Traversal Protocol

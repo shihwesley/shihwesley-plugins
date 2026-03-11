@@ -85,11 +85,14 @@ We took the MOC structure and adapted it for a different problem: agent navigati
 - **Coupling detection triggers graph creation.** neo-research assesses coupling during its question tree phase — if 3+ sub-topics reference each other, it recommends creating a skill graph. The `/create-skill-graph` command then builds the graph from the research output automatically.
 - **Domain-scoped stores.** Apple's 300+ framework docs are split into 15 domain stores (spatial-computing, swiftui, ml-ai, etc.) so each MOC searches only its relevant domain.
 
-The `/create-skill-graph` command works from two sources:
-1. **From research output** — uses `question-tree.md` branches as MOC candidates. Each branch with 2+ sub-questions becomes a MOC.
-2. **From existing files** — inventories your `.claude/commands/`, `.claude/skills/`, `.claude/docs/`, and `.claude/agents/`, clusters by topic, and turns each cluster into a MOC.
+The skill graph tools ship as two separate skills:
 
-Currently ships as a command skill (`/create-skill-graph`), not a standalone plugin. The first graph built with it covers iOS/visionOS/Swift development — 10 MOCs mapping 35+ files across 8 command skills, 2 agents, 24 docs, and 15 domain knowledge stores.
+- **`skills/create-skill-graph/SKILL.md`** — The `/create-skill-graph` command. Works from research output (`question-tree.md` branches as MOC candidates) or from existing files (inventories `.claude/commands/`, `.claude/skills/`, `.claude/docs/`, `.claude/agents/`, clusters by topic).
+- **`skills/traverse-template/SKILL.md`** — Template for the traversal protocol included in every graph. Teaches agents the 3-read progressive disclosure pattern. Agent-only, not user-invocable.
+
+The release skill at **`skills/release/SKILL.md`** handles semver tagging, changelog generation, and GitHub Release creation for any plugin in the collection.
+
+The first graph built with `/create-skill-graph` covers iOS/visionOS/Swift development — 10 MOCs mapping 35+ files across 8 command skills, 2 agents, 24 docs, and 15 domain knowledge stores.
 
 ### Orchestration (preview)
 

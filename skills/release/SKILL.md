@@ -1,6 +1,9 @@
 ---
 name: release
-description: "Release a shihwesley plugin — validates, tests, generates changelog, tags, creates GitHub Release, updates version files and marketplace.json. Industry-standard semver flow."
+description: "Release a shihwesley plugin with semver versioning, conventional commit parsing, changelog generation, and GitHub Release creation. Use when user says /release, wants to tag a new version, publish a release, bump version, or create a changelog. Supports patch/minor/major and --dry-run."
+metadata:
+  author: shihwesley
+  version: 1.0.0
 ---
 
 # Release: $ARGUMENTS
